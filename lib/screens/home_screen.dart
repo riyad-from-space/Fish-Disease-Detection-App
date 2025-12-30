@@ -143,34 +143,34 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(l10n.appTitle),
         backgroundColor: Colors.blue[700],
         foregroundColor: Colors.white,
-        actions: [
-          // Language Switcher
-          PopupMenuButton<Locale>(
-            icon: const Icon(Icons.language),
-            tooltip: l10n.language,
-            onSelected: (Locale locale) {
-              languageProvider.setLocale(locale);
-            },
-            itemBuilder: (BuildContext context) => [
-              const PopupMenuItem(
-                value: Locale('en', ''),
-                child: Text('English'),
-              ),
-              const PopupMenuItem(
-                value: Locale('bn', ''),
-                child: Text('বাংলা'),
-              ),
-            ],
-          ),
-          IconButton(
-            icon: Icon(
-              _isHealthy ? Icons.check_circle : Icons.error,
-              color: _isHealthy ? Colors.green : Colors.red,
-            ),
-            onPressed: _checkApiHealth,
-            tooltip: _isHealthy ? l10n.apiConnected : l10n.apiDisconnected,
-          ),
-        ],
+        // actions: [
+        //   // Language Switcher
+        //   PopupMenuButton<Locale>(
+        //     icon: const Icon(Icons.language),
+        //     tooltip: l10n.language,
+        //     onSelected: (Locale locale) {
+        //       languageProvider.setLocale(locale);
+        //     },
+        //     itemBuilder: (BuildContext context) => [
+        //       const PopupMenuItem(
+        //         value: Locale('en', ''),
+        //         child: Text('English'),
+        //       ),
+        //       const PopupMenuItem(
+        //         value: Locale('bn', ''),
+        //         child: Text('বাংলা'),
+        //       ),
+        //     ],
+        //   ),
+        //   IconButton(
+        //     icon: Icon(
+        //       _isHealthy ? Icons.check_circle : Icons.error,
+        //       color: _isHealthy ? Colors.green : Colors.red,
+        //     ),
+        //     onPressed: _checkApiHealth,
+        //     tooltip: _isHealthy ? l10n.apiConnected : l10n.apiDisconnected,
+        //   ),
+        // ],
       ),
       body: SingleChildScrollView(
         child: Padding(
