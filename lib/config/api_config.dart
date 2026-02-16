@@ -9,7 +9,7 @@ class ApiConfig {
 
   /// Local network URL - for real devices on same WiFi network
   /// Example: Your computer's local IP address
-  static const String localNetworkUrl = 'http://192.168.0.150:8000';
+  static const String localNetworkUrl = 'http://192.168.1.151:8000';
 
   /// Android emulator URL - use this for Android emulator
   /// 10.0.2.2 is the special alias to your host loopback interface
@@ -18,6 +18,10 @@ class ApiConfig {
   /// iOS simulator URL - use this for iOS simulator
   /// localhost works directly in iOS simulator
   static const String iosSimulatorUrl = 'http://localhost:8000';
+
+  /// Public URL - for production server
+  /// Use this for accessing backend from anywhere
+  static const String publicUrl = 'https://fish-disease-detector.onrender.com';
 
   // ============================================================================
   // ADVANCED SETTINGS (usually don't need to change)

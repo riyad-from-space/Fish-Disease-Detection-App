@@ -9,15 +9,21 @@ import '../config/api_config.dart';
 class ApiService {
   // Get the appropriate base URL based on platform
   static String get baseUrl {
+    // Use public URL (ngrok) for all platforms
+    return ApiConfig.publicUrl;
+    
+    // Alternative: Use platform-specific URLs (uncomment if needed)
+    /*
     if (Platform.isAndroid) {
-      // For real device, use local network URL
-      // For emulator, you might want to use androidEmulatorUrl
-      return ApiConfig.localNetworkUrl;
+      // For emulator: use androidEmulatorUrl
+      // For real device: use localNetworkUrl or publicUrl
+      return ApiConfig.publicUrl;
     } else if (Platform.isIOS) {
-      // For iOS simulator, use localhost
-      return ApiConfig.iosSimulatorUrl;
+      // For iOS simulator, use localhost or publicUrl
+      return ApiConfig.publicUrl;
     }
-    return ApiConfig.localNetworkUrl;
+    return ApiConfig.publicUrl;
+    */
   }
 
   // You can manually set the base URL if needed
