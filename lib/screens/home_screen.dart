@@ -102,6 +102,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
       if (!mounted) return;
 
+      // Check if the image contains a fish
+      if (!prediction.isFish) {
+        final shouldProceed = await _showNotFishDialog();
+        if (!shouldProceed || !mounted) {
+          setState(() => _isLoading = false);
+          return;
+        }
+      }
+
       // Navigate to results screen
       Navigator.push(
         context,
@@ -124,6 +133,49 @@ class _HomeScreenState extends State<HomeScreen> {
         _isLoading = false;
       });
     }
+  }
+
+  Future<bool> _showNotFishDialog() async {
+    return await showDialog<bool>(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            icon: const Icon(
+              Icons.warning_amber_rounded,
+              color: Color(0xFFF59E0B),
+              size: 48,
+            ),
+            title: const Text(
+              'Not a Fish Image',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            content: const Text(
+              'The uploaded image does not appear to contain a fish. '
+              'Results may not be accurate.\n\n'
+              'Would you like to proceed anyway or select a different image?',
+              textAlign: TextAlign.center,
+            ),
+            actionsAlignment: MainAxisAlignment.center,
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: const Text('Select Another Image'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.pop(context, true),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange,
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text('Proceed Anyway'),
+              ),
+            ],
+          ),
+        ) ??
+        false;
   }
 
   void _clearImage() {
